@@ -18,7 +18,22 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<modules>
+		<module>thrustcurve/thrustcurve-client</module>
+		<module>thrustcurve/thrustcurve-extract</module>
+	</modules>
+
 	<dependencies>
+		<dependency>
+			<groupId>org.ncrocketry</groupId>
+			<artifactId>thrustcurve-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ncrocketry</groupId>
+			<artifactId>thrustcurve-extract</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-groovy-templates</artifactId>

@@ -1,0 +1,3 @@
+[submodule "thrustcurve"]
+	path = thrustcurve
+	url = git@github.com:ncrclub/thrustcurve.git

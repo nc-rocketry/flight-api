@@ -1,4 +1,4 @@
-package org.ncr.flight.api;
+package org.ncr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
