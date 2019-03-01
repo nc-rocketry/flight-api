@@ -9,13 +9,8 @@ spring:
   groovy:
     template:
       configuration:
-        auto-indent: true
         cache-templates: false
-        auto-new-line: true
-        resource-loader-path: templates
-
-
-
+        #resource-loader-path: /templates
 
 ncr:
   db:

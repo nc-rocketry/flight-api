@@ -1,4 +1,4 @@
-package org.ncr.flight.api;
+package org.ncr;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,12 @@
 layout 'layouts/simple.tpl',
-  content: contents {
-    div('hello there')
-  }
+    page_title: 'Thrustcurve API',
+    content: contents {
+        table {
+            tbody {
+                tr {
+                    td(a(href:"/") { yield 'Home' })
+                    td(a(href:"/") { yield 'Home' })
+                }
+            }
+        }
+    }

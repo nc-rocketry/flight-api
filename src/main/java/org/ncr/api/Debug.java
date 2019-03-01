@@ -1,4 +1,4 @@
-package org.ncr.flight.api;
+package org.ncr.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
