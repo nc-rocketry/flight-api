@@ -1,0 +1,19 @@
+
+logging:
+  level:
+    org.springframework.web: INFO
+
+spring:
+  application:
+    name: ncr-flight-api
+  groovy:
+    template:
+      cache: false
+
+ncr:
+  db:
+    username:
+    password:
+    driver: com.cj.jdbc.Driver
+    connection: jdbc:mysql://sql.morsecode-inc.com/ncrdev
+

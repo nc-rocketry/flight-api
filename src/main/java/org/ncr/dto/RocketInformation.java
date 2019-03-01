@@ -6,6 +6,6 @@ public class RocketInformation {
     public String colors;
     public String manufacturer;
 
-    public double diameter
+    public double diameter;
 
 }

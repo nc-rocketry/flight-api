@@ -8,19 +8,19 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
-@Configuration("ncr")
+@Configuration
 public class Config {
 
-    @Value("${db.connection}")
+    @Value("${ncr.db.connection}")
     private String connection;
 
-    @Value("${db.username}")
+    @Value("${ncr.db.username}")
     private String username;
 
-    @Value("${db.password}")
+    @Value("${ncr.db.password}")
     private String password;
 
-    @Value("${db.driver}")
+    @Value("${ncr.db.driver}")
     private String driver;
 
     @Bean
