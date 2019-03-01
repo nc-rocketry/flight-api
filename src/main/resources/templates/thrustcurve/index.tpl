@@ -1,4 +1,4 @@
 layout 'layouts/simple.tpl',
   content: contents {
-    div('hello')
+    div('hello there')
   }

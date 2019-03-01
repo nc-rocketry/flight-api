@@ -8,7 +8,14 @@ spring:
     name: ncr-flight-api
   groovy:
     template:
-      cache: false
+      configuration:
+        auto-indent: true
+        cache-templates: false
+        auto-new-line: true
+        resource-loader-path: templates
+
+
+
 
 ncr:
   db:
