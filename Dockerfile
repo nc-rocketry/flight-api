@@ -16,4 +16,8 @@ WORKDIR /usr/local/app
 COPY webservice/target/webservice*fat*.jar /usr/local/app/
 
 EXPOSE 8080
-CMD java -cp . "-Dspring.profiles.active=${SPRING_PROFILE}" -jar webservice*fat*.jar
+CMD java \
+    "-Dspring.profiles.active=${SPRING_PROFILE}" \
+    "-Dncr.db.password=${NCR_APP_PASSWORD}" \
+    "-Dncr.db.encoded=true" \
+    -jar webservice*fat*.jar

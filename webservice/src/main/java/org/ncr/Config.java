@@ -1,5 +1,6 @@
 package org.ncr;
 
+import club.ncr.security.Crypto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,10 @@ public class Config {
     @Value("${ncr.db.driver}")
     private String driver;
 
+    @Value("${ncr.db.encoded}")
+    private Boolean encoded;
+
+
     @Bean
     public JdbcTemplate getNcrDb() {
         return new JdbcTemplate(getNcrDataSource());
@@ -33,7 +38,7 @@ public class Config {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName(driver);
         ds.setUsername(username);
-        ds.setPassword(password);
+        ds.setPassword(encoded ? Crypto.decode(password) : password);
         ds.setUrl(connection);
         System.out.println("DB Connection: "+ connection);
         return ds;
