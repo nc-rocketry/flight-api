@@ -1,8 +1,19 @@
 from openjdk:8-jre-alpine3.9
 
+RUN apk add bash
+ARG SPRING_PROFILE=prod
+ARG NCR_APP_PASSWORD='WUCvxzscpV.['
+ARG NCR_DB='192.168.1.127'
+
+ENV NCR_APP_PASSWORD=${NCR_APP_PASSWORD}
+ENV SPRING_PROFILE=${SPRING_PROFILE}
+ENV NCR_DB={NCR_DB}
+
+RUN echo "$NCR_DB db.ncr" >> /etc/hosts
+
 RUN mkdir /usr/local/app
 WORKDIR /usr/local/app
-RUN apk add bash
-COPY webservice/target/*fat*jar /usr/local/app/
+COPY webservice/target/webservice*fat*.jar /usr/local/app/
 
-CMD /bin/bash
+EXPOSE 8080
+CMD java -cp . "-Dspring.profiles.active=${SPRING_PROFILE}" -jar webservice*fat*.jar
