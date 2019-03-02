@@ -1,7 +1,0 @@
-ncr:
-  db:
-    username: ncrclub
-    password: 4oSNXLdcFGle
-    connection: jdbc:mysql://sql.morsecode-inc.com/devncr
-    driver: com.mysql.cj.jdbc.Driver
-
