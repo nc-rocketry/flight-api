@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/ncrclub/flight-api']
+- name: 'gcr.io/cloud-builders/git'
+  args: ['submodule', 'update', '--init']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us.gcr.io/suckit-150602/flight-log-api:$BRANCH_NAME', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us.gcr.io/suckit-150602/flight-log-api:$BRANCH_NAME']
+
