@@ -16,6 +16,6 @@ ncr:
   db:
     username:
     password:
-    driver: com.cj.jdbc.Driver
-    connection: jdbc:mysql://sql.morsecode-inc.com/ncrdev
+    driver: com.mysql.cj.jdbc.Driver
+    connection: jdbc:mysql://db.ncr/flight
 

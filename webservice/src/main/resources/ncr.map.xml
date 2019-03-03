@@ -5,7 +5,7 @@
 	 project-version="10">
 	<property name="defaultPackage" value="club.ncr.cayenne"/>
 	<property name="defaultSchema" value="ncr"/>
-	<db-entity name="flight_event" schema="ncr">
+	<db-entity name="flight_event" schema="flight">
 		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
 		<db-attribute name="event_date" type="DATE" length="10"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
@@ -13,7 +13,7 @@
 		<db-attribute name="title" type="VARCHAR" length="45"/>
 		<db-attribute name="weather_conditions" type="LONGVARCHAR" length="65535"/>
 	</db-entity>
-	<db-entity name="flight_log" schema="ncr">
+	<db-entity name="flight_log" schema="flight">
 		<db-attribute name="altitude" type="INTEGER" length="11"/>
 		<db-attribute name="flight_date" type="DATE" isMandatory="true" length="10"/>
 		<db-attribute name="flight_notes" type="LONGVARCHAR" length="65535"/>
@@ -27,7 +27,7 @@
 		<db-attribute name="motor_name_id" type="INTEGER" isMandatory="true" length="11"/>
 		<db-attribute name="motor_weight" type="DOUBLE" isMandatory="true" length="22"/>
 	</db-entity>
-	<db-entity name="flyer_record" schema="ncr">
+	<db-entity name="flyer_record" schema="flight">
 		<db-attribute name="address_1" type="VARCHAR" length="50"/>
 		<db-attribute name="address_2" type="VARCHAR" length="50"/>
 		<db-attribute name="address_city" type="VARCHAR" length="50"/>
@@ -61,7 +61,7 @@
 		<db-attribute name="username" type="VARCHAR" length="25"/>
 		<db-attribute name="work_phone" type="VARCHAR" length="20"/>
 	</db-entity>
-	<db-entity name="flyer_rocket" schema="ncr">
+	<db-entity name="flyer_rocket" schema="flight">
 		<db-attribute name="flyer_user_id" type="INTEGER" length="11"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="maiden_flight_date" type="DATE" length="10"/>
@@ -70,7 +70,7 @@
 		<db-attribute name="user_notes" type="LONGVARCHAR" length="65535"/>
 		<db-attribute name="weight_units" type="VARCHAR" length="10"/>
 	</db-entity>
-	<db-entity name="gallery" schema="ncr">
+	<db-entity name="gallery" schema="flight">
 		<db-attribute name="created" type="DATE"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="name" type="VARCHAR" length="255"/>
@@ -78,7 +78,7 @@
 		<db-attribute name="updated" type="DATE"/>
 		<db-attribute name="views" type="BIGINT"/>
 	</db-entity>
-	<db-entity name="gallery_image" schema="ncr">
+	<db-entity name="gallery_image" schema="flight">
 		<db-attribute name="data" type="BLOB"/>
 		<db-attribute name="description" type="VARCHAR" length="1024"/>
 		<db-attribute name="filename" type="VARCHAR" length="128"/>
@@ -90,7 +90,7 @@
 		<db-attribute name="title" type="VARCHAR" length="255"/>
 		<db-attribute name="views" type="BIGINT"/>
 	</db-entity>
-	<db-entity name="legacy_flyer_record" schema="ncr">
+	<db-entity name="legacy_flyer_record" schema="flight">
 		<db-attribute name="address_1" type="VARCHAR" length="50"/>
 		<db-attribute name="address_2" type="VARCHAR" length="50"/>
 		<db-attribute name="address_city" type="VARCHAR" length="50"/>
@@ -118,7 +118,7 @@
 		<db-attribute name="username" type="VARCHAR" length="25"/>
 		<db-attribute name="work_phone" type="VARCHAR" length="20"/>
 	</db-entity>
-	<db-entity name="legacy_launch_event" schema="ncr">
+	<db-entity name="legacy_launch_event" schema="flight">
 		<db-attribute name="club_launch" type="CHAR" length="1"/>
 		<db-attribute name="created_date" type="TIMESTAMP" isMandatory="true" length="19"/>
 		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
@@ -128,7 +128,7 @@
 		<db-attribute name="name" type="VARCHAR" length="50"/>
 		<db-attribute name="weather" type="LONGVARCHAR" length="65535"/>
 	</db-entity>
-	<db-entity name="legacy_launch_log" schema="ncr">
+	<db-entity name="legacy_launch_log" schema="flight">
 		<db-attribute name="altitude" type="BIGINT" length="9"/>
 		<db-attribute name="contests" type="VARCHAR" length="255"/>
 		<db-attribute name="created_date" type="TIMESTAMP" isMandatory="true" length="19"/>
@@ -151,11 +151,11 @@
 		<db-attribute name="rocket" type="VARCHAR" length="50"/>
 		<db-attribute name="rso_initials" type="VARCHAR" length="5"/>
 	</db-entity>
-	<db-entity name="legacy_level_type" schema="ncr">
+	<db-entity name="legacy_level_type" schema="flight">
 		<db-attribute name="description" type="VARCHAR" length="50"/>
 		<db-attribute name="id" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="4"/>
 	</db-entity>
-	<db-entity name="motor" schema="ncr">
+	<db-entity name="motor" schema="flight">
 		<db-attribute name="CertOrgID" type="INTEGER" isMandatory="true"/>
 		<db-attribute name="Designation" type="VARCHAR" length="64"/>
 		<db-attribute name="DiameterID" type="INTEGER" isMandatory="true"/>
@@ -177,15 +177,15 @@
 		<db-attribute name="total_impulse_ns" type="DOUBLE"/>
 		<db-attribute name="weight" type="DOUBLE"/>
 	</db-entity>
-	<db-entity name="motor_case" schema="ncr">
+	<db-entity name="motor_case" schema="flight">
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="64"/>
 	</db-entity>
-	<db-entity name="motor_cert_org" schema="ncr">
+	<db-entity name="motor_cert_org" schema="flight">
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="Name" type="VARCHAR" length="64"/>
 	</db-entity>
-	<db-entity name="motor_data" schema="ncr">
+	<db-entity name="motor_data" schema="flight">
 		<db-attribute name="data" type="BLOB" isMandatory="true"/>
 		<db-attribute name="data_url" type="VARCHAR" length="128"/>
 		<db-attribute name="file_id" type="INTEGER"/>
@@ -196,34 +196,34 @@
 		<db-attribute name="motor_id" type="INTEGER" isMandatory="true"/>
 		<db-attribute name="source" type="VARCHAR" length="32"/>
 	</db-entity>
-	<db-entity name="motor_data_format" schema="ncr">
+	<db-entity name="motor_data_format" schema="flight">
 		<db-attribute name="FileExtension" type="VARCHAR" length="4"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="Name" type="VARCHAR" length="64"/>
 	</db-entity>
-	<db-entity name="motor_diameter" schema="ncr">
+	<db-entity name="motor_diameter" schema="flight">
 		<db-attribute name="Diameter" type="INTEGER"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 	</db-entity>
-	<db-entity name="motor_impulse" schema="ncr">
+	<db-entity name="motor_impulse" schema="flight">
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="Impulse" type="VARCHAR" length="1"/>
 	</db-entity>
-	<db-entity name="motor_mfg" schema="ncr">
+	<db-entity name="motor_mfg" schema="flight">
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="Name" type="VARCHAR" length="64"/>
 		<db-attribute name="abbreviation" type="VARCHAR" length="64"/>
 	</db-entity>
-	<db-entity name="motor_name" schema="ncr">
+	<db-entity name="motor_name" schema="flight">
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="ImpulseID" type="INTEGER" length="11"/>
 		<db-attribute name="Name" type="VARCHAR" length="64"/>
 	</db-entity>
-	<db-entity name="motor_propellant" schema="ncr">
+	<db-entity name="motor_propellant" schema="flight">
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="11"/>
 		<db-attribute name="Name" type="VARCHAR" length="32"/>
 	</db-entity>
-	<db-entity name="motor_type" schema="ncr">
+	<db-entity name="motor_type" schema="flight">
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="64"/>
 	</db-entity>

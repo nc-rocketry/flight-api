@@ -24,20 +24,21 @@ public class Config {
     @Value("${ncr.db.driver}")
     private String driver;
 
-    @Value("${ncr.db.encoded}")
+    @Value("${ncr.db.encoded:false}")
     private Boolean encoded;
 
 
     @Bean
-    public JdbcTemplate getNcrDb() {
-        return new JdbcTemplate(getNcrDataSource());
+    public JdbcTemplate ncrDb() {
+        return new JdbcTemplate(ncrDataSource());
     }
 
     @Bean
-    public DataSource getNcrDataSource() {
+    public DataSource ncrDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName(driver);
         ds.setUsername(username);
+        System.out.println(" the password is "+ (encoded ? Crypto.decode(password) : password));
         ds.setPassword(encoded ? Crypto.decode(password) : password);
         ds.setUrl(connection);
         System.out.println("DB Connection: "+ connection);

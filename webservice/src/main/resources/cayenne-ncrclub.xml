@@ -8,10 +8,10 @@
 		 factory="org.apache.cayenne.configuration.server.XMLPoolingDataSourceFactory">
 		<map-ref name="ncr"/>
 		<data-source>
-			<driver value="com.mysql.jdbc.Driver"/>
-			<url value="jdbc:mysql://db.ncr/flight"/>
+			<driver value="com.mysql.cj.jdbc.Driver"/>
+			<url value="jdbc:mysql://10.39.64.3/flight"/>
 			<connectionPool min="1" max="5"/>
-			<login userName="ncr_app" password="NCR_APP_PASSWORD" encoderClass="External" encoderKey="Rt6h76"/>
+			<login userName="flight_api" password="NCR_APP_PASSWORD" encoderClass="External" encoderKey="Rt6h76"/>
 		</data-source>
 	</node>
 </domain>
