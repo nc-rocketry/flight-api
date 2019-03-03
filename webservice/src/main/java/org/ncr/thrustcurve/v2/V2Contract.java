@@ -20,5 +20,5 @@ public interface V2Contract {
 
     List<MotorManufacturerDTO> manufacturers();
 
-    List<MotorDataDTO> getMotorData(String motorId) throws IOException;
+    List<MotorDTO> getMotorData(String motorId) throws IOException;
 }

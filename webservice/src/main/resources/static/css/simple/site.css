@@ -55,10 +55,14 @@
     overflow-y: auto;
     background-color: var(--background);
     border-top: var(--border);
+    alignment: left;
+    text-align: left;
+    float: left;
 }
 
 .container .row {
     border-bottom: 1px solid #777777;
+    alignment: left;
 }
 
 .row .label {

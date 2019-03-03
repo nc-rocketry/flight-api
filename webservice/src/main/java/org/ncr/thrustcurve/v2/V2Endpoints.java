@@ -2,11 +2,9 @@ package org.ncr.thrustcurve.v2;
 
 import club.ncr.cayenne.Motor;
 import club.ncr.dto.MotorDTO;
-import club.ncr.dto.MotorDataDTO;
 import club.ncr.dto.MotorManufacturerDTO;
 import club.ncr.etl.TCMotorLoad;
 import club.ncr.motors.MotorDbCache;
-import org.ncr.dto.motor.MotorSummary;
 import org.ncr.dto.motor.ImpulseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,20 +72,16 @@ public class V2Endpoints implements V2Contract {
 
     @Override
     @RequestMapping(value = "/get/motor/{id}", method = RequestMethod.GET, produces = "application/json")
-    public List<MotorDataDTO> getMotorData(@PathVariable String id) throws IOException {
+    public List<MotorDTO> getMotorData(@PathVariable String id) throws IOException {
         final Motor motor= cache.getMotor(id);
-        if (motor.getData().size() == 0) {
-            return Arrays.asList(new MotorDataDTO(motor, null));
-        }
-        return motor.getData().stream().map(data -> new MotorDataDTO(motor, data))
-                .collect(Collectors.toList());
+        return Arrays.asList(new MotorDTO(motor));
     }
 
     @RequestMapping(value = "/cache/index/by/manufacturer")
     public List<Object> cacheIndexByManufacturer() {
         return cache.getManufacturers().stream()
                 .map(mfg -> mfg.getMotors().stream()
-                        .map(motor -> new MotorSummary(motor))
+                        .map(motor -> new MotorDTO(motor))
                         .sorted()
                 )
                 .collect(Collectors.toList());
@@ -97,7 +91,7 @@ public class V2Endpoints implements V2Contract {
     public List<Object> cacheIndexByImpulse() {
         return cache.getImpulses().stream()
                 .map(impulse -> impulse.getMotors().stream()
-                        .map(motor -> new MotorSummary(motor))
+                        .map(motor -> new MotorDTO(motor))
                         .sorted()
                 )
                 .collect(Collectors.toList());
