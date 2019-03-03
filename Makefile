@@ -7,12 +7,14 @@ clean:
 	mvn clean
 
 build:
-	mvn install
+	#mvn install
 	docker build -t $(IMAGE) .
 	docker tag $(IMAGE) $(REPO)/$(PROJECT)/$(IMAGE)
 
 run:
-	docker run -p 80:8080 --add-host sql.morsecode-inc.com:173.255.113.87 $(IMAGE)
+	docker stop $(IMAGE) >/dev/null 2>&1
+	docker rm $(IMAGE) >/dev/null 2>&1
+	docker run --name $(IMAGE) -d -p 80:8080 --add-host sql.morsecode-inc.com:173.255.113.87 $(IMAGE) 
 
 push:
 	docker push $(REPO)/$(PROJECT)/$(IMAGE)
