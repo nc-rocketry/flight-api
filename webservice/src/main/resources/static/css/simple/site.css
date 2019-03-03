@@ -56,3 +56,20 @@
     background-color: var(--background);
     border-top: var(--border);
 }
+
+.container .row {
+    border-bottom: 1px solid #777777;
+}
+
+.row .label {
+    font-weight: bold;
+    font-size: +1em;
+}
+
+.row .label {
+    font-weight: bold;
+    font-size: +1em;
+}
+
+.row .value {
+}

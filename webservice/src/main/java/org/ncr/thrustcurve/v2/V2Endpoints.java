@@ -7,7 +7,7 @@ import club.ncr.dto.MotorManufacturerDTO;
 import club.ncr.etl.TCMotorLoad;
 import club.ncr.motors.MotorDbCache;
 import org.ncr.dto.motor.MotorSummary;
-import org.ncr.model.MotorImpulse;
+import org.ncr.dto.motor.ImpulseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,6 @@ import org.thrustcurve.api.search.SearchRequest;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,7 +38,7 @@ public class V2Endpoints implements V2Contract {
 
     @Override
     @RequestMapping(value="/search/impulse/{impulse}", method = RequestMethod.GET, produces = "application/json")
-    public List<MotorDTO> search(@PathVariable("impulse") MotorImpulse impulse) throws IOException {
+    public List<MotorDTO> search(@PathVariable("impulse") ImpulseDTO impulse) throws IOException {
         return search(new SearchCriteria().impulseClass(impulse.toString()), false);
     }
 
@@ -105,7 +104,7 @@ public class V2Endpoints implements V2Contract {
     }
 
     @RequestMapping(value = "/cache/update/{impulse}")
-    public String updateCache(@PathVariable MotorImpulse impulse) {
+    public String updateCache(@PathVariable ImpulseDTO impulse) {
         new TCMotorLoad(cache.getImpulse(impulse.toString())).execute();
         return "OK";
     }

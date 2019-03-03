@@ -1,6 +1,6 @@
-package org.ncr.model;
+package org.ncr.dto.motor;
 
-public enum MotorImpulse {
+public enum ImpulseDTO {
 
     A(2.5),
     B((int)(2.0 * A.maxNewtonSeconds)),
@@ -24,7 +24,7 @@ public enum MotorImpulse {
     public final double minNewtonSeconds;
     public final double maxNewtonSeconds;
 
-    MotorImpulse(double maxNewtonSeconds) {
+    ImpulseDTO(double maxNewtonSeconds) {
         this.maxNewtonSeconds= maxNewtonSeconds;
         this.minNewtonSeconds= maxNewtonSeconds / 2;
     }

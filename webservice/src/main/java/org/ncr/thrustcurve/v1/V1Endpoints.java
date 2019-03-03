@@ -1,7 +1,7 @@
 package org.ncr.thrustcurve.v1;
 
 import club.ncr.motors.MotorDbCache;
-import org.ncr.model.MotorImpulse;
+import org.ncr.dto.motor.ImpulseDTO;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +26,7 @@ public class V1Endpoints implements V1Contract {
 
     @Override
     @RequestMapping(value="/search/impulse/{impulse}", method = RequestMethod.GET, produces = "application/json")
-    public Object search(@PathVariable("impulse") MotorImpulse impulse) throws IOException {
+    public Object search(@PathVariable("impulse") ImpulseDTO impulse) throws IOException {
         return search(new SearchCriteria().impulseClass(impulse.toString()));
     }
 

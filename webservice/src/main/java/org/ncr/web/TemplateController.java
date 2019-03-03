@@ -13,6 +13,10 @@ public class TemplateController {
         data.set(new HashMap<>());
     }
 
+    public boolean isInitialized() {
+        return data.get() != null;
+    }
+
     /**
      * Set a parameter value that will be passed to the view.
      * @param name
@@ -24,9 +28,10 @@ public class TemplateController {
     }
 
     protected String render(String view, Model model) {
-        if (data.get() != null) {
-            model.addAllAttributes(data.get());
+        if (!isInitialized()) {
+            init();
         }
+        model.addAllAttributes(data.get());
         return view;
     }
 }
