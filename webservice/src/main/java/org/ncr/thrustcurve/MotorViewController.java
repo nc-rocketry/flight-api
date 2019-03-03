@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/thrustcurve")
-public class Search extends TemplateController {
+public class MotorViewController extends TemplateController {
 
     @Autowired
     private MotorDbCache motorCache;
@@ -31,24 +31,20 @@ public class Search extends TemplateController {
         set("manufacturers", motorCache.getManufacturers());
     }
 
-    @GetMapping(value = "/search", produces = "text/html")
-    public String index(ServletRequest req, ServletResponse resp, Model model) {
-        return render("thrustcurve/search", model);
-    }
-
-
-    @GetMapping(value = "/impulse/{impulse}", produces = "text/html")
-    public String byImpulse(@PathVariable ImpulseDTO impulse, Model model) {
+    @GetMapping(value = "/motor/{externalId}", produces = "text/html")
+    public String byImpulse(@PathVariable String externalId, Model model) {
         init();
 
-        List<MotorDTO> motors = motorCache.getImpulse(impulse.toString()).getMotors().stream()
-                .map(motor -> new MotorDTO(motor))
-                .collect(Collectors.toList());
+        MotorDTO motor = new MotorDTO(motorCache.getMotor(externalId));
 
-        set("motors", motors);
-        set("selected_impulse", impulse.toString());
+        set("motor", motor);
+        set("selected_impulse", motor.impulse);
+        set("selected_diameter", motor.diameter);
 
-        return render("thrustcurve/impulse", model);
+        return render("thrustcurve/motor_results", model);
     }
+
+    // TODO: make download(data)
+
 
 }
