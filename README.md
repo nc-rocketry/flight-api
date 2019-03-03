@@ -69,4 +69,4 @@ gcloud config set project suckit-150602
 ## Push Docker Image
 This requires that you have access to the Google Project.
 
-```make run```
+```make push```
