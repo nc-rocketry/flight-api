@@ -7,7 +7,7 @@ clean:
 	mvn clean
 
 build:
-	#mvn install
+	mvn install
 	docker build -t $(IMAGE) .
 	docker tag $(IMAGE) $(REPO)/$(PROJECT)/$(IMAGE)
 

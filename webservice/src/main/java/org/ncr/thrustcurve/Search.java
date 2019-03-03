@@ -29,10 +29,6 @@ public class Search extends TemplateController {
         set("diameters", motorCache.getDiameters());
         set("manufacturers", motorCache.getManufacturers());
 
-        model.addAttribute("impulses", motorCache.getImpulses());
-        model.addAttribute("diameters", motorCache.getImpulses());
-        model.addAttribute("manufacturers", motorCache.getImpulses());
-
         return render("thrustcurve/search", model);
     }
 

@@ -24,7 +24,9 @@ public class TemplateController {
     }
 
     protected String render(String view, Model model) {
-        model.addAllAttributes(data.get());
+        if (data.get() != null) {
+            model.addAllAttributes(data.get());
+        }
         return view;
     }
 }
