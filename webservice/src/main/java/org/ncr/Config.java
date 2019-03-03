@@ -1,5 +1,7 @@
 package org.ncr;
 
+import club.ncr.cayenne.Motor;
+import club.ncr.motors.MotorDbCache;
 import club.ncr.security.Crypto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,8 @@ import javax.sql.DataSource;
 
 @Configuration
 public class Config {
+
+    private MotorDbCache motorCache= new MotorDbCache("cayenne-ncrclub.xml");
 
     @Value("${ncr.db.connection}")
     private String connection;
@@ -44,4 +48,10 @@ public class Config {
         System.out.println("DB Connection: "+ connection);
         return ds;
     }
+
+    @Bean
+    public MotorDbCache motorCache() {
+        return motorCache;
+    }
+
 }
