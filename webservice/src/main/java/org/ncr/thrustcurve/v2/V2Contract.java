@@ -13,9 +13,9 @@ public interface V2Contract {
 
     List<MotorDTO> search(MotorImpulse impulse) throws IOException;
 
-    List<MotorDTO> search(int diameter) throws IOException;
+    List<MotorDTO> search(float diameter) throws IOException;
 
-    List<Integer> diameters();
+    List<Float> diameters();
 
     List<String> impulses();
 

@@ -5,6 +5,6 @@ head {
     link(rel:"shortcut icon", type:"image/ico", href:"http://ncrocketry.club/favicon.ico")
 
     link(rel:"stylesheet", href:"/css/bootstrap.min.css")
-    link(rel:"stylesheet", href:"/css/site.css")
+    link(rel:"stylesheet", href:"/css/simple/site.css")
     title(page_title)
 }

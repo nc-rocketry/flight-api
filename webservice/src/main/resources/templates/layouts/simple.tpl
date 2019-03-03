@@ -4,14 +4,19 @@ html {
     body {
         include template:'layouts/simple/navigation.tpl'
 
-        div(class:'container-fluid crumbs-container') { include template:'layouts/simple/breadcrumbs.tpl' }
-        br()
-        div(class:'container crumbs-container') { include template:'layouts/simple/breadcrumbs.tpl' }
-        br()
-        div(class:'container content-container') { content() }
-        br()
+        div(class:"headline") {
+            div(class:'container-fluid content-container') { banner() }
+        }
+        div(class:"crumbs") {
+            div(class:'container-fluid content-container') { crumbs() }
+        }
+        div(class:"main") {
+            div(class:'container-fluid content-container') { content() }
+        }
+        div(class:"footer") {
+            div(class:'container-fluid content-container') { include template:'layouts/simple/footer.tpl' }
+        }
 
-        div(class:'page-footer') { include template:'layouts/simple/footer.tpl' }
         include template:'layouts/simple/page-javascript.tpl'
     }
 }

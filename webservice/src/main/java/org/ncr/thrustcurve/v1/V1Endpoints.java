@@ -32,7 +32,7 @@ public class V1Endpoints implements V1Contract {
 
     @Override
     @RequestMapping(value = "/search/diameter/{diameter}", method = RequestMethod.GET, produces = "application/json")
-    public Object search(@PathVariable("diameter") int diameter) throws IOException {
+    public Object search(@PathVariable("diameter") float diameter) throws IOException {
         return search(new SearchCriteria().diameter(diameter));
     }
 
@@ -46,7 +46,7 @@ public class V1Endpoints implements V1Contract {
 
     @Override
     @RequestMapping(value = "/list/diameters", method = RequestMethod.GET, produces = "application/json")
-    public List<Integer> diameters() { return cache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
+    public List<Float> diameters() { return cache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/list/impulses", method = RequestMethod.GET, produces = "application/json")
