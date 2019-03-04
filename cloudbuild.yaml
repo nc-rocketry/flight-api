@@ -2,6 +2,12 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/ncrclub/flight-api']
 - name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    ssh-keyscan github.com >> /root/.ssh/known_hosts
+- name: 'gcr.io/cloud-builders/git'
   args: ['submodule', 'update', '--init']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us.gcr.io/suckit-150602/flight-log-api:$BRANCH_NAME', '.']
