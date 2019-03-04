@@ -10,7 +10,7 @@ crumbs: contents {
     include template:"snipit/motors_by_impulse.tpl"
 },
 content: contents {
-    div(class:"container", align:"left", position:"left") {
+    div(class:"container-fluid", align:"left", position:"left") {
         div(class:"row") {
              div(class:"col label left", "Designation")
              div(class:"col label center", "Details" )
