@@ -1,20 +1,20 @@
 package org.ncr.model;
 
-import org.apache.commons.collections.list.UnmodifiableList;
+import org.ncr.dto.motor.ImpulseDTO;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class ImpulseList implements Iterable<MotorImpulse> {
+public class ImpulseList implements Iterable<ImpulseDTO> {
 
-    public static final List<MotorImpulse> IMPULSES = Collections.unmodifiableList(Arrays.asList(MotorImpulse.values()));
+    public static final List<ImpulseDTO> IMPULSES = Collections.unmodifiableList(Arrays.asList(ImpulseDTO.values()));
 
     public ImpulseList() {
     }
 
-    public Iterator<MotorImpulse> iterator() {
+    public Iterator<ImpulseDTO> iterator() {
         return IMPULSES.iterator();
     }
 }

@@ -7,9 +7,10 @@ clean:
 	mvn clean
 
 build:
-	#mvn install
+	mvn clean install
 	docker build -t $(IMAGE) .
 	docker tag $(IMAGE) $(REPO)/$(PROJECT)/$(IMAGE)
+	docker tag $(IMAGE) $(REPO)/$(PROJECT)/$(IMAGE):dev
 
 run:
 	docker stop $(IMAGE) >/dev/null 2>&1
@@ -18,4 +19,5 @@ run:
 
 push:
 	docker push $(REPO)/$(PROJECT)/$(IMAGE)
+	docker push $(REPO)/$(PROJECT)/$(IMAGE):dev
 

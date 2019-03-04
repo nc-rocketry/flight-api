@@ -13,9 +13,12 @@ spring:
         #resource-loader-path: /templates
 
 ncr:
-  db:
-    username:
-    password:
-    driver: com.mysql.cj.jdbc.Driver
-    connection: jdbc:mysql://db.ncr/flight
+  flight:
+    db:
+      driver: com.mysql.cj.jdbc.Driver
+      connection: jdbc:mysql://db.ncr/flight
+  records:
+    db:
+      driver: com.mysql.cj.jdbc.Driver
+      connection: jdbc:mysql://db.ncr/flight
 

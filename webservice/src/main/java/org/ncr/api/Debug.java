@@ -15,7 +15,10 @@ import java.sql.SQLException;
 public class Debug {
 
     @Autowired
-    private JdbcTemplate ncrDb;
+    private JdbcTemplate flightDb;
+
+    @Autowired
+    private JdbcTemplate recordsDb;
 
     private RowMapper<Date> dateReader= new RowMapper<Date>() {
             public Date mapRow(ResultSet resultSet, int rowId) throws SQLException {
@@ -26,7 +29,7 @@ public class Debug {
     @RequestMapping("/debug")
     @ResponseBody()
     public Object dothing() {
-        Date now= ncrDb.query("select now()", dateReader).get(0);
+        Date now= flightDb.query("select now()", dateReader).get(0);
         return "hello, it is now "+ now;
     }
 
