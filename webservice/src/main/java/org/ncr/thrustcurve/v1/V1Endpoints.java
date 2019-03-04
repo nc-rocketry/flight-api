@@ -2,6 +2,7 @@ package org.ncr.thrustcurve.v1;
 
 import club.ncr.motors.MotorDbCache;
 import org.ncr.dto.motor.ImpulseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +21,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/thrustcurve/api/v1")
 public class V1Endpoints implements V1Contract {
 
+    @Autowired
+    private TCApiClient client;
 
-    private TCApiClient client= new TCApiClient();
-    private MotorDbCache cache= new MotorDbCache("cayenne-ncrclub.xml");
+    @Autowired
+    private MotorDbCache motorCache;
 
     @Override
     @RequestMapping(value="/search/impulse/{impulse}", method = RequestMethod.GET, produces = "application/json")
@@ -46,15 +49,15 @@ public class V1Endpoints implements V1Contract {
 
     @Override
     @RequestMapping(value = "/list/diameters", method = RequestMethod.GET, produces = "application/json")
-    public List<Float> diameters() { return cache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
+    public List<Float> diameters() { return motorCache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/list/impulses", method = RequestMethod.GET, produces = "application/json")
-    public List<String> impulses() { return cache.getImpulses().stream().map(i -> i.getImpulse()).collect(Collectors.toList()); }
+    public List<String> impulses() { return motorCache.getImpulses().stream().map(i -> i.getImpulse()).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/list/manufacturers", method = RequestMethod.GET, produces = "application/json")
-    public List<Map<String, Object>> manufacturers() { return cache.getManufacturers().stream().map(m -> m.asMap()).collect(Collectors.toList()); }
+    public List<Map<String, Object>> manufacturers() { return motorCache.getManufacturers().stream().map(m -> m.asMap()).collect(Collectors.toList()); }
 
 
 }

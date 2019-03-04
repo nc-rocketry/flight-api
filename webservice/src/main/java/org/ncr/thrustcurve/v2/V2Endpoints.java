@@ -25,10 +25,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/thrustcurve/api/v2")
 public class V2Endpoints implements V2Contract {
 
-    private TCApiClient client= new TCApiClient();
+    @Autowired
+    private TCApiClient client;
 
     @Autowired
-    private MotorDbCache cache= new MotorDbCache("cayenne-ncrclub.xml");
+    private MotorDbCache motorCache;
 
     @PostConstruct
     private void init() {
@@ -60,26 +61,26 @@ public class V2Endpoints implements V2Contract {
 
     @Override
     @RequestMapping(value = "/list/diameters", method = RequestMethod.GET, produces = "application/json")
-    public List<Float> diameters() { return cache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
+    public List<Float> diameters() { return motorCache.getDiameters().stream().map(d -> d.getDiameter()).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/list/impulses", method = RequestMethod.GET, produces = "application/json")
-    public List<String> impulses() { return cache.getImpulses().stream().map(i -> i.getImpulse()).collect(Collectors.toList()); }
+    public List<String> impulses() { return motorCache.getImpulses().stream().map(i -> i.getImpulse()).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/list/manufacturers", method = RequestMethod.GET, produces = "application/json")
-    public List<MotorManufacturerDTO> manufacturers() { return cache.getManufacturers().stream().map(m -> new MotorManufacturerDTO(m)).collect(Collectors.toList()); }
+    public List<MotorManufacturerDTO> manufacturers() { return motorCache.getManufacturers().stream().map(m -> new MotorManufacturerDTO(m)).collect(Collectors.toList()); }
 
     @Override
     @RequestMapping(value = "/get/motor/{id}", method = RequestMethod.GET, produces = "application/json")
     public List<MotorDTO> getMotorData(@PathVariable String id) throws IOException {
-        final Motor motor= cache.getMotor(id);
+        final Motor motor= motorCache.getMotor(id);
         return Arrays.asList(new MotorDTO(motor));
     }
 
-    @RequestMapping(value = "/cache/index/by/manufacturer")
-    public List<Object> cacheIndexByManufacturer() {
-        return cache.getManufacturers().stream()
+    @RequestMapping(value = "/cache/index/manufacturer")
+    public List<Object> motorCacheIndexByManufacturer() {
+        return motorCache.getManufacturers().stream()
                 .map(mfg -> mfg.getMotors().stream()
                         .map(motor -> new MotorDTO(motor))
                         .sorted()
@@ -87,9 +88,9 @@ public class V2Endpoints implements V2Contract {
                 .collect(Collectors.toList());
     }
 
-    @RequestMapping(value = "/cache/index/by/impulse")
-    public List<Object> cacheIndexByImpulse() {
-        return cache.getImpulses().stream()
+    @RequestMapping(value = "/cache/index/impulse")
+    public List<Object> motorCacheIndexByImpulse() {
+        return motorCache.getImpulses().stream()
                 .map(impulse -> impulse.getMotors().stream()
                         .map(motor -> new MotorDTO(motor))
                         .sorted()
@@ -99,7 +100,7 @@ public class V2Endpoints implements V2Contract {
 
     @RequestMapping(value = "/cache/update/{impulse}")
     public String updateCache(@PathVariable ImpulseDTO impulse) {
-        new TCMotorLoad(cache.getImpulse(impulse.toString())).execute();
+        new TCMotorLoad(motorCache.getImpulse(impulse.toString())).execute();
         return "OK";
     }
 

@@ -6,7 +6,7 @@ banner: contents {
     include template:"layouts/simple/banner.tpl"
 },
 crumbs: contents {
-    include template:"snipit/motors_by_diameter.tpl"
+    //include template:"snipit/motors_by_diameter.tpl"
     include template:"snipit/motors_by_impulse.tpl"
 },
 content: contents {
