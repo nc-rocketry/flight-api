@@ -12,34 +12,64 @@ crumbs: contents {
 content: contents {
     div(class:"container", align:"left", position:"left") {
         div(class:"row") {
-             div(class:"col label", "Designation")
-             div(class:"col label", "Manufacturer" )
-             div(class:"col label", "Diameter (mm)" )
-             div(class:"col label", "Weight (oz)" )
-             div(class:"col label", "Length" )
-             div(class:"col label", "Burn Time (s)" )
-             div(class:"col label", "Motor Case" )
-             //div(class:"col label", "Data" )
+             div(class:"col label left", "Designation")
+             div(class:"col label left", "Propellant" )
+             div(class:"col label center", "Details" )
+             div(class:"col label left", "Manufacturer" )
+             // div(class:"col label left", "Motor Case" )
+
         }
         motors.each { m ->
             div(class:"row") {
-                div(class:"col value") { a(href:"/thrustcurve/motor/$m.externalId", "$m.designation [$m.manufacturer.abbreviation]") }
+                div(class:"col value") {
+                    a(href:"/thrustcurve/motor/$m.externalId", "$m.designation [$m.manufacturer.abbreviation]")
+                }
+                div(class:"col value") { yield m.propellant }
                 div(class:"col value") { yield m.manufacturer.name }
-                div(class:"col value") { yield m.diameter }
-                div(class:"col value") { yield m.weight }
-                div(class:"col value") { yield m.length }
-                div(class:"col value") { yield m.burnTime }
-                div(class:"col value") { yield m.motorCase }
-                //div(class:"col value") {
-                   //div(class:"container")
-                   //div(class:"row") {
-                       //motors.data.each { data ->
-                           //div(class:"col value") { yield data.infoUrl }
-                           //div(class:"col value") { yield data.dataUrl }
-                       //}
-                   //}
-                //}
+                div(class:"col value") {
+                    div(class:"container") {
+                        div(class:"row") {
+                            div(class:"col sm-label") { yield "Diameter:" }
+                            div(class:"col sm-value") { yield "${m.diameter}mm" }
+                        }
+                        div(class:"row") {
+                            div(class:"col sm-label") { yield "Weight:" }
+                            div(class:"col sm-value") { yield "${m.weight}oz" }
+                        }
+                        div(class:"row") {
+                            div(class:"col sm-label") { yield "Length:" }
+                            div(class:"col sm-value") { yield "${m.length}" }
+                        }
+                        div(class:"row") {
+                            div(class:"col sm-label") { yield "Length:" }
+                            div(class:"col sm-value") { yield "${m.length}" }
+                        }
+                        div(class:"row") {
+                            div(class:"col sm-label") { yield "Burn:" }
+                            div(class:"col sm-value") { yield "${m.burnTime}s" }
+                        }
+                    }
+                }
+                // div(class:"col value") { yield m.motorCase }
             }
+            div(class:"row") {
+                div(class:"col value") {
+                    div(class:"container") {
+                        m.data.each { d ->
+                            div(class:"row") {
+                                div(class:"col sm-label") { yieldUnescaped "Sim&nbsp;File:" }
+                                div(class:"col sm-value") { a(href:"${d.infoUrl}", "${d.filename}") }
+                                div(class:"col sm-label") { yieldUnescaped "Source:" }
+                                div(class:"col sm-value") { p("${d.source}") }
+                                div(class:"col sm-label") { yieldUnescaped "License:" }
+                                div(class:"col sm-value") { p("${d.license}") }
+                            }
+                        }
+                    }
+                }
+                div(class:"col value") { }
+            }
+            div(class:"row", style:"background:#000000;") { br(); yieldUnescaped "&nbsp;" }
         }
 
     }

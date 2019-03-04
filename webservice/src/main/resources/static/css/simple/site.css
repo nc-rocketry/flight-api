@@ -61,19 +61,32 @@
 }
 
 .container .row {
-    border-bottom: 1px solid #777777;
+    border-bottom: 0px solid #777777;
     alignment: left;
 }
 
-.row .label {
-    font-weight: bold;
-    font-size: +1em;
-}
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
 
 .row .label {
+    border-top: 1px solid #aaaaad;
     font-weight: bold;
     font-size: +1em;
 }
 
 .row .value {
+    text-align: left;
+}
+
+.row .sm-label {
+    font-weight: bold;
+    text-align: right;
+    font-size: 8pt;
+}
+
+.row .sm-value {
+    border-right: 0px solid;
+    text-align: left;
+    font-size: 8pt;
 }
